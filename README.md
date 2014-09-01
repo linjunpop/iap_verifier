@@ -1,4 +1,4 @@
-# IapVerifier
+# IAPVerifier
 
 In-App Purchase receipt verification.
 
