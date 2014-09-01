@@ -9,12 +9,22 @@ module IAPVerifier
     end
 
     class NetworkDown < Standard
-      def new(response)
+      def initialize(response)
         @response = response
       end
 
       def message
         "Server returns unexpected code: #{@response.code}."
+      end
+    end
+
+    class MalformedReceiptData < Standard
+      def initialize(data)
+        @data = data
+      end
+
+      def message
+        "Malformed Receipt data: #{@data}"
       end
     end
 
