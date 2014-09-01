@@ -19,7 +19,7 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-receipt = IAPVerifier.verify_receipt(receipt: 'base64_encoded_receipt_string', is_base64: true)
+receipt = IAPVerifier.verify_receipt(receipt: 'base64_encoded_receipt_string')
 receipt.original_application_version # 1234
 receipt.original_purchase_date_pst # 2014-08-31 11:24:13 America/Los_Angeles
 ```

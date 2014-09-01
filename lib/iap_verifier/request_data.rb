@@ -1,9 +1,7 @@
-require 'base64'
-
 module IAPVerifier
   class RequestData
-    def initialize(receipt, is_base64)
-      @receipt = is_base64 ? receipt : Base64.urlsafe_encode64(receipt)
+    def initialize(receipt)
+      @receipt = receipt
     end
 
     def to_h

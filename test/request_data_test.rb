@@ -8,10 +8,6 @@ class RequestDataTest < MiniTest::Test
     expected = {
       'receipt-data' => receipt
     }
-    assert_equal expected, IAPVerifier::RequestData.new(receipt, true).to_h
-  end
-
-  def test_receipt
-    skip 'pending'
+    assert_equal expected, IAPVerifier::RequestData.new(receipt).to_h
   end
 end

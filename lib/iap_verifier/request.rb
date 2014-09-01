@@ -7,9 +7,9 @@ module IAPVerifier
     PRODUCTION_URL = "https://buy.itunes.apple.com/verifyReceipt"
     SANDBOX_URL = "https://sandbox.itunes.apple.com/verifyReceipt"
 
-    def initialize(receipt:, is_base64: false)
-      @request_data = RequestData.new(receipt, is_base64)
-      if /\A[[:space:]]*\z/.match(receipt)
+    def initialize(receipt:)
+      @request_data = RequestData.new(receipt)
+      unless receipt.length > 0
         raise Error::EmptyReceipt.new
       end
     end

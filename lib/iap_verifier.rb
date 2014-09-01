@@ -7,13 +7,13 @@ require 'iap_verifier/receipt'
 
 module IAPVerifier
   class << self
-    def verify_receipt!(receipt:, is_base64: false)
-      IAPVerifier::Request.new(receipt: receipt, is_base64: is_base64).response.receipt
+    def verify_receipt!(receipt:)
+      IAPVerifier::Request.new(receipt: receipt).response.receipt
     end
 
-    def verify_receipt(receipt:, is_base64: false)
+    def verify_receipt(receipt:)
       begin
-        verify_receipt!(receipt: receipt, is_base64: is_base64)
+        verify_receipt!(receipt: receipt)
       rescue IAPVerifier::Error::Standard
         return nil
       end
