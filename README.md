@@ -1,6 +1,6 @@
 # IapVerifier
 
-TODO: Write a gem description
+In-App Purchase receipt verification.
 
 ## Installation
 
@@ -18,11 +18,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+receipt = IAPVerifier.verify_receipt(receipt: 'base64_encoded_receipt_string', is_base64: true)
+receipt.original_application_version # 1234
+receipt.original_purchase_date_pst # 2014-08-31 11:24:13 America/Los_Angeles
+```
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/iap_verifier/fork )
+1. Fork it ( https://github.com/linjunpop/iap_verifier/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = IAPVerifier::VERSION
   spec.authors       = ["Jun Lin"]
   spec.email         = ["linjunpop@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{In-App Purchase receipt verification.}
+  spec.description   = %q{In-App Purchase receipt verification.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
