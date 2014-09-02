@@ -10,7 +10,7 @@ class RequestTest < MiniTest::Test
 
   def test_response
     VCR.use_cassette('valid_receipt') do
-      receipt = File.read(File.expand_path("../fixtures/base64_receipt", __FILE__)).chop
+      receipt = File.read(File.expand_path("../fixtures/base64_receipt", __FILE__))
       response_data = IAPVerifier::Request.new(receipt: receipt).response
 
       assert_equal true, response_data.valid?

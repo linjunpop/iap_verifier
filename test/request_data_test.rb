@@ -3,7 +3,7 @@ require 'iap_verifier/request_data'
 
 class RequestDataTest < MiniTest::Test
   def test_base64_receipt
-    receipt = File.read(File.expand_path("../fixtures/base64_receipt", __FILE__)).chop
+    receipt = File.read(File.expand_path("../fixtures/base64_receipt", __FILE__))
 
     expected = {
       'receipt-data' => receipt

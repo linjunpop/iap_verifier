@@ -3,6 +3,7 @@ require "minitest/reporters"
 require 'mocha/mini_test'
 require 'webmock/minitest'
 require 'vcr'
+require 'pry'
 
 Minitest::Reporters.use!
 
