@@ -7,13 +7,13 @@ require 'iap_verifier/receipt'
 
 module IAPVerifier
   class << self
-    def verify_receipt!(receipt:)
-      IAPVerifier::Request.new(receipt: receipt).response.receipt
+    def verify_receipt!(receipt)
+      IAPVerifier::Request.new(receipt).response.receipt
     end
 
-    def verify_receipt(receipt:)
+    def verify_receipt(receipt)
       begin
-        verify_receipt!(receipt: receipt)
+        verify_receipt!(receipt)
       rescue IAPVerifier::Error::Standard
         return nil
       end
