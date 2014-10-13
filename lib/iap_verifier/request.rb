@@ -1,5 +1,6 @@
 require 'json'
 require 'curb'
+require 'oj'
 
 module IAPVerifier
   class Request
@@ -37,7 +38,7 @@ module IAPVerifier
       end
       response = http.body_str
 
-      ResponseData.new(JSON.parse(response))
+      ResponseData.new(Oj.load(response))
     end
   end
 end
