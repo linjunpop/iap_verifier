@@ -2,6 +2,8 @@
 
 ## master
 
+## v0.1.0
+
 * Use [oj](https://github.com/ohler55/oj) to load JSON.
 * Use [curb](https://github.com/taf2/curb) as http client.
 * Support ruby 1.9 & 2.0.
