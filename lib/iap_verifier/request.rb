@@ -1,6 +1,5 @@
 require 'json'
-require 'net/https'
-require 'uri'
+require 'curb'
 
 module IAPVerifier
   class Request
@@ -32,24 +31,13 @@ module IAPVerifier
     end
 
     def verify(request_data, url)
-      uri = URI(url)
-      http = Net::HTTP.new(uri.host, uri.port)
-
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-
-      request = Net::HTTP::Post.new(uri.request_uri)
-      request['Content-Type'] = "application/json"
-      request['Accept'] = "application/json"
-      request.body = request_data.to_json
-
-      response = http.request(request)
-
-      if response.instance_of?(Net::HTTPOK)
-        ResponseData.new(JSON.parse(response.body))
-      else
-        raise Error::NetworkDown.new(response)
+      http = Curl.post(url, request_data.to_json) do |client|
+        client.headers['Content-Type'] = "application/json"
+        client.headers['Accept'] = "application/json"
       end
+      response = http.body_str
+
+      ResponseData.new(JSON.parse(response))
     end
   end
 end
