@@ -1,5 +1,5 @@
 require 'json'
-require 'curb'
+require 'httpclient'
 require 'oj'
 
 module IAPVerifier
@@ -32,13 +32,14 @@ module IAPVerifier
     end
 
     def verify(request_data, url)
-      http = Curl.post(url, request_data.to_json) do |client|
-        client.headers['Content-Type'] = "application/json"
-        client.headers['Accept'] = "application/json"
-      end
-      response = http.body_str
+      http = HTTPClient.new
+      response = http.post(
+        url,
+        body: request_data.to_json,
+        header: {'Content-Type' => "application/json", 'Accept' => 'application/json'}
+      )
 
-      ResponseData.new(Oj.load(response))
+      ResponseData.new(Oj.load(response.content))
     end
   end
 end

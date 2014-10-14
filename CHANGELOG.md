@@ -2,6 +2,8 @@
 
 ## master
 
+* curb is not thread-safe, [httpclient](https://github.com/nahi/httpclient) does.
+
 ## v0.1.0
 
 * Use [oj](https://github.com/ohler55/oj) to load JSON.

@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency 'curb'
+  spec.add_runtime_dependency 'httpclient'
   spec.add_runtime_dependency 'oj'
 
   spec.add_development_dependency "bundler", "~> 1.6"
