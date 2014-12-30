@@ -2,6 +2,8 @@
 
 ## master
 
+## v0.2.0
+
 * Fixes OpenSSL::SSL::SSLError [#1](https://github.com/linjunpop/iap_verifier/pull/1)
 * curb is not thread-safe, [httpclient](https://github.com/nahi/httpclient) does.
 
