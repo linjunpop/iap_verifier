@@ -33,6 +33,7 @@ module IAPVerifier
 
     def verify(request_data, url)
       http = HTTPClient.new
+      http.ssl_config.ssl_version = :TLSv1
       response = http.post(
         url,
         body: request_data.to_json,
