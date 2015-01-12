@@ -1,6 +1,5 @@
 require 'json'
 require 'httpclient'
-require 'oj'
 
 module IAPVerifier
   class Request
@@ -12,7 +11,9 @@ module IAPVerifier
         raise Error::EmptyReceipt.new
       end
 
-      @request_data = RequestData.new(receipt)
+      @request_data = {
+        'receipt-data' => receipt
+      }
     end
 
     def response
@@ -40,7 +41,7 @@ module IAPVerifier
         header: {'Content-Type' => "application/json", 'Accept' => 'application/json'}
       )
 
-      ResponseData.new(Oj.load(response.content))
+      ResponseData.new(response.content)
     end
   end
 end

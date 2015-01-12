@@ -1,10 +1,16 @@
+require 'oj'
+
 module IAPVerifier
   class ResponseData
     SUCCESS_RESPONSE_CODE = 0
     SANDBOX_RECEIPT_CODE = 21007
 
-    def initialize(response_data)
-      @response_data = response_data
+    def initialize(json)
+      @response_data = Oj.load(json)
+
+      raise Error::MalformedResponseData.new(json) unless @response_data.is_a?(Hash)
+    rescue Oj::ParseError
+      raise Error::MalformedResponseData.new(json)
     end
 
     def valid?
@@ -19,7 +25,7 @@ module IAPVerifier
       if valid?
         Receipt.new(@response_data)
       else
-        raise Error::InvalidResponseData.new(status_code)
+        raise Error::InvalidReceiptData.new(status_code)
       end
     end
 

@@ -18,17 +18,17 @@ module IAPVerifier
       end
     end
 
-    class MalformedReceiptData < Standard
+    class MalformedResponseData < Standard
       def initialize(data)
         @data = data
       end
 
       def message
-        "Malformed Receipt data: #{@data}"
+        "Malformed response from Apple Server: #{data}"
       end
     end
 
-    class InvalidResponseData < Standard
+    class InvalidReceiptData < Standard
       MESSAGES = {
         21000 => "App store could not read",
         21002 => "Data was malformed",
