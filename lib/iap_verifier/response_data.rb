@@ -2,8 +2,8 @@ require 'oj'
 
 module IAPVerifier
   class ResponseData
-    SUCCESS_RESPONSE_CODE = 0
-    SANDBOX_RECEIPT_CODE = 21007
+    SUCCESS_RESPONSE_CODE = 0.freeze
+    SANDBOX_RECEIPT_CODE = 21007.freeze
 
     def initialize(json)
       @response_data = Oj.load(json)
