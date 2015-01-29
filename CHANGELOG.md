@@ -2,6 +2,8 @@
 
 ## master
 
+## v0.3.0
+
 Improvement
 
 * Handle malformed response from Apple's server.
