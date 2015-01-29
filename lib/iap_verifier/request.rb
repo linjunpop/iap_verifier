@@ -1,6 +1,3 @@
-require 'json'
-require 'httpclient'
-
 module IAPVerifier
   class Request
     PRODUCTION_URL = "https://buy.itunes.apple.com/verifyReceipt"
@@ -33,15 +30,21 @@ module IAPVerifier
     end
 
     def verify(request_data, url)
-      http = HTTPClient.new
-      http.ssl_config.ssl_version = :TLSv1
-      response = http.post(
-        url,
-        body: request_data.to_json,
-        header: {'Content-Type' => "application/json", 'Accept' => 'application/json'}
-      )
+      uri = URI(url)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 
-      ResponseData.new(response.content)
+      request = Net::HTTP::Post.new(uri.request_uri)
+
+      request['Accept'] = "application/json"
+      request['Content-Type'] = "application/json"
+
+      request.body = request_data.to_json
+
+      response = http.request(request)
+
+      ResponseData.new(response.body)
     end
   end
 end

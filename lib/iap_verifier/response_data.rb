@@ -1,4 +1,4 @@
-require 'oj'
+require 'json'
 
 module IAPVerifier
   class ResponseData
@@ -6,10 +6,10 @@ module IAPVerifier
     SANDBOX_RECEIPT_CODE = 21007.freeze
 
     def initialize(json)
-      @response_data = Oj.load(json)
+      @response_data = JSON.parse(json)
 
       raise Error::MalformedResponseData.new(json) unless @response_data.is_a?(Hash)
-    rescue Oj::ParseError
+    rescue JSON::ParserError
       raise Error::MalformedResponseData.new(json)
     end
 

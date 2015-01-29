@@ -1,7 +1,6 @@
 # IAPVerifier
 
 [![Build Status](https://travis-ci.org/linjunpop/iap_verifier.svg)](https://travis-ci.org/linjunpop/iap_verifier)
-[![Dependency Status](http://img.shields.io/gemnasium/linjunpop/iap_verifier.svg)](https://gemnasium.com/linjunpop/iap_verifier)
 [![Code Climate](http://img.shields.io/codeclimate/github/linjunpop/iap_verifier.svg)](https://codeclimate.com/github/linjunpop/iap_verifier)
 [![Gem Version](http://img.shields.io/gem/v/iap_verifier.svg)](https://rubygems.org/gems/iap_verifier)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://linjunpop.mit-license.org)

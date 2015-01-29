@@ -5,6 +5,7 @@
 Improvement
 
 * Handle malformed response from Apple's server.
+* Remove external dependencies (Oj and HTTPClient).
 
 ## v0.2.0
 
