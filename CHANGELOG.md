@@ -2,6 +2,8 @@
 
 ## master
 
+* Allow chained method calls on `IAPVerifier::Receipt`. (ex. `receipt.in_app.quantity #=> "1"`)
+
 ## v0.3.0
 
 Improvement

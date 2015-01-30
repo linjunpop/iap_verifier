@@ -1,15 +1,26 @@
 module IAPVerifier
   class Receipt
-    def initialize(response_data)
-      @receipt_data = response_data['receipt']
-
-      @receipt_data.each do |key, value|
-        define_singleton_method key.to_s, -> { value }
+    def initialize(receipt_hash)
+      @receipt_hash = receipt_hash
+      @receipt_hash.each do |key, value|
+        if key == :in_app
+          define_singleton_method key, -> { value.map { |in_app| InApp.new(in_app)} }
+        else
+          define_singleton_method key, -> { value }
+        end
       end
     end
 
     def to_h
-      @receipt_data
+      @receipt_hash
+    end
+
+    class InApp
+      def initialize(in_app_hash)
+        in_app_hash.each do |key, value|
+          define_singleton_method key, -> { value }
+        end
+      end
     end
   end
 end

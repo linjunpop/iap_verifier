@@ -8,16 +8,6 @@ module IAPVerifier
       end
     end
 
-    class NetworkDown < Standard
-      def initialize(response)
-        @response = response
-      end
-
-      def message
-        "Server returns unexpected code: #{@response.code}."
-      end
-    end
-
     class MalformedResponseData < Standard
       def initialize(data)
         @data = data

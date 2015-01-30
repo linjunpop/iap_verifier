@@ -6,7 +6,7 @@ module IAPVerifier
     SANDBOX_RECEIPT_CODE = 21007.freeze
 
     def initialize(json)
-      @response_data = JSON.parse(json)
+      @response_data = JSON.parse(json, symbolize_names: true)
 
       raise Error::MalformedResponseData.new(json) unless @response_data.is_a?(Hash)
     rescue JSON::ParserError
@@ -23,7 +23,7 @@ module IAPVerifier
 
     def receipt
       if valid?
-        Receipt.new(@response_data)
+        Receipt.new(@response_data.fetch(:receipt))
       else
         raise Error::InvalidReceiptData.new(status_code)
       end
@@ -32,7 +32,7 @@ module IAPVerifier
     private
 
     def status_code
-      @response_data['status']
+      @response_data.fetch(:status)
     end
   end
 end
